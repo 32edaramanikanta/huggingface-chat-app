@@ -38,7 +38,7 @@ Keep your responses practical, clear, and helpful for Indian farmers.
 #Keyword Filter (Optional)
 
 def is_farming_related(question: str) -> bool:
-keywords = [
+    keywords = [
 "crop", "soil", "fertilizer", "weather", "market", "pest",
 "disease", "harvest", "irrigation", "farmer", "agriculture",
 "seed", "climate", "farming", "tractor", "rainfall", "spray", "yield"
