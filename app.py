@@ -55,32 +55,33 @@ if "chat" not in st.session_state:
 #Hugging Face Query
 
 def query_zephyr(prompt):
-formatted = f"<|system|>\n{SYSTEM_PROMPT.strip()}\n<|user|>\n{prompt.strip()}\n<|assistant|>\n"
-payload = {
-"inputs": formatted,
-"parameters": {
-"temperature": 0.7,
-"max_new_tokens": 512,
-"return_full_text": False
-}
-}
+    formatted = f"<|system|>\n{SYSTEM_PROMPT.strip()}\n<|user|>\n{prompt.strip()}\n<|assistant|>\n"
+    payload = {
+        "inputs": formatted,
+        "parameters": {
+            "temperature": 0.7,
+            "max_new_tokens": 512,
+            "return_full_text": False
+        }
+    }
+
+    try:
+        response = requests.post(API_URL, headers=HEADERS, json=payload)
+        if response.status_code == 200:
+            result = response.json()
+            return result[0]["generated_text"].strip()
+        elif response.status_code == 503:
+            return "⏳ The model is still loading, try again in a few seconds."
+        elif response.status_code == 401:
+            return "🔒 Invalid or missing Hugging Face token."
+        elif response.status_code == 402:
+            return "❌ You’ve run out of HF inference credits."
+        else:
+            return f"❌ Error {response.status_code}: {response.text}"
+    except Exception as e:
+        return f"🚫 Failed to connect: {str(e)}"
 
 
-try:
-    response = requests.post(API_URL, headers=HEADERS, json=payload)
-    if response.status_code == 200:
-        result = response.json()
-        return result[0]["generated_text"].strip()
-    elif response.status_code == 503:
-        return "⏳ The model is still loading, try again in a few seconds."
-    elif response.status_code == 401:
-        return "🔒 Invalid or missing Hugging Face token."
-    elif response.status_code == 402:
-        return "❌ You've run out of Hugging Face inference credits."
-    else:
-        return f"❌ Error {response.status_code}: {response.text}"
-except Exception as e:
-    return f"🚫 Failed to connect: {str(e)}"
 
 #Chat Input
 
