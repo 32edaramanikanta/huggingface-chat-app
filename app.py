@@ -101,7 +101,7 @@ if st.button("Ask") and user_input:
 #Show Chat History
 
 for message in reversed(st.session_state.chat):
-    with st.chat_message(message["role"]):
+     with st.chat_message(message["role"]):
         #st.markdown(f"**{message['role'].capitalize()}:** {message['content']}")
 
 
