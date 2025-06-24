@@ -47,9 +47,9 @@ Keep your responses practical, clear, and helpful for Indian farmers.
 
 
 #Chat State
-
 if "chat" not in st.session_state:
-st.session_state.chat = []
+    st.session_state.chat = []
+
 
 
 #Hugging Face Query
