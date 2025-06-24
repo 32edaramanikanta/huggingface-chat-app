@@ -43,6 +43,7 @@ keywords = [
 "disease", "harvest", "irrigation", "farmer", "agriculture",
 "seed", "climate", "farming", "tractor", "rainfall", "spray", "yield"
 ]
+return any(word in question.lower() for word in keywords)
 
 
 #Chat State
