@@ -95,8 +95,8 @@ if st.button("Ask") and user_input:
     else:
         reply = "I'm here to help only with farming and agricultural questions. Could you please ask something related to farming?"
 
-st.session_state.chat.append({"role": "user", "content": user_input})
-st.session_state.chat.append({"role": "assistant", "content": reply})
+    st.session_state.chat.append({"role": "user", "content": user_input})
+    st.session_state.chat.append({"role": "assistant", "content": reply})
 
 #Show Chat History
 
