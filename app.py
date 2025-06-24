@@ -83,7 +83,9 @@ if st.button("Ask") and user_input:
         reply = query_zephyr(user_input)
         st.session_state.chat.append({"role": "user", "content": user_input})
         st.session_state.chat.append({"role": "assistant", "content": reply})
-        st.experimental_rerun()
+        #st.experimental_rerun()
+if st.button("Clear Chat"):
+st.session_state.chat = []
 
 # ----------------------------
 # Show Chat History
