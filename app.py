@@ -43,7 +43,7 @@ def is_farming_related(question: str) -> bool:
 "disease", "harvest", "irrigation", "farmer", "agriculture",
 "seed", "climate", "farming", "tractor", "rainfall", "spray", "yield"
 ]
-return any(word in question.lower() for word in keywords)
+    return any(word in question.lower() for word in keywords)
 
 
 #Chat State
