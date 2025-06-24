@@ -92,11 +92,14 @@ if st.button("Ask") and user_input:
     if is_farming_related(user_input):
         with st.spinner("Thinking..."):
             reply = query_zephyr(user_input)
+        # Only save farming-related Q&A in chat history
+        st.session_state.chat.append({"role": "user", "content": user_input})
+        st.session_state.chat.append({"role": "assistant", "content": reply})
     else:
+        # For unrelated questions, just show the polite message but DO NOT save it in chat history
         reply = "I'm here to help only with farming and agricultural questions. Could you please ask something related to farming?"
+        st.info(reply)  # Show as info box or use st.warning if you want
 
-    st.session_state.chat.append({"role": "user", "content": user_input})
-    st.session_state.chat.append({"role": "assistant", "content": reply})
 
 #Show Chat History
 
