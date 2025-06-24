@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import json
 
-----------------------------
+
 #App Setup
 ----------------------------
 st.set_page_config(page_title="🌾 Farmer Assistant", page_icon="🌱")
