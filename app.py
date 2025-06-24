@@ -89,11 +89,12 @@ st.markdown("### 💬 Chat")
 user_input = st.text_input("Ask your farming question", placeholder="e.g., Best fertilizer for tomato plants")
 
 if st.button("Ask") and user_input:
-if is_farming_related(user_input):
-with st.spinner("Thinking..."):
-reply = query_zephyr(user_input)
-else:
-reply = "I'm here to help only with farming and agricultural questions. Could you please ask something related to farming?"
+    if is_farming_related(user_input):
+        with st.spinner("Thinking..."):
+            reply = query_zephyr(user_input)
+    else:
+        reply = "I'm here to help only with farming and agricultural questions. Could you please ask something related to farming?"
+
 
 
 st.session_state.chat.append({"role": "user", "content": user_input})
